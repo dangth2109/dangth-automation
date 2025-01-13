@@ -3,8 +3,8 @@ const fs = require('fs');
 const path = require('path');
 require('dotenv').config();
 const baseUrl = process.env.WOOCOMMERCE_URL;
-const consumerKey = process.env.WOOCOMMERCE_COMSUMER_KEY;
-const consumerSecret = process.env.WOOCOMMERCE_COMSUMER_SECRET;
+const consumerKey = process.env.WOOCOMMERCE_COMSUMER_KEY || '';
+const consumerSecret = process.env.WOOCOMMERCE_COMSUMER_SECRET || '';
 
 const orderCount = 1; // order count
 const productsPerOrder = 2; // products per order
@@ -34,9 +34,7 @@ const shippingAddress = {
 async function getAllProducts() {
   const url = `${baseUrl}/wp-json/wc/v3/products`;
   try {
-    const response = await axios({
-      method: "get",
-      url,
+    const response = await axios.get(url, {
       auth: {
         username: consumerKey,
         password: consumerSecret,

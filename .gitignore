@@ -1,3 +1,11 @@
 javascript/node_modules
 javascript/result.json
 javascript/.env
+
+test.js
+
+results/
+*log.html
+*output.xml
+*report.html
+*.png
